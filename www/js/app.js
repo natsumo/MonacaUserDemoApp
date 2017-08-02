@@ -6,7 +6,7 @@ var clientKey = "YOUR_NCMB_CLIENTKEY";
 var ncmb = new NCMB(appKey, clientKey);
 
 // ログイン中ユーザー
-var currentLoginUser; 
+var currentLoginUser;
 
 /********** ID / PW 認証 **********/
 // 【ID / PW 認証】「登録する」ボタン押下時の処理
@@ -68,7 +68,7 @@ function onIDLoginBtn() {
     var password = $("#IDLogin_password").val();
     // loading の表示
     jQuery.mobile.loading('show');
-    
+
     // [NCMB] ID / PW でログイン
     ncmb.User.login(username, password)
              .then(function(user) {
@@ -151,7 +151,7 @@ function onEmailLoginBtn() {
 }
 
 /********** 匿名認証**********/
-// 【匿名認証】「ログインする」ボタン押下時の処理 
+// 【匿名認証】「ログインする」ボタン押下時の処理
 function onAnonymousLoginBtn() {
     // loading の表示
     jQuery.mobile.loading('show');
@@ -176,7 +176,7 @@ function onAnonymousLoginBtn() {
 
 /********** 共通 **********/
 // 「ログアウト」ボタン押下後確認アラートで「はい」押下時の処理
-function onLogoutBtn() {  
+function onLogoutBtn() {
     // [NCMB] ログアウト
     ncmb.User.logout();
     console.log("ログアウトに成功しました");
@@ -198,7 +198,7 @@ $(function() {
     /* Email / PW */
     $("#emailLoginBtn").click(onEmailLoginBtn);
     $("#YesBtn_mailAddress").click(onEmailRegisterBtn);
-    $("#NoBtn_mailAddress").click(onDeleteField);  
+    $("#NoBtn_mailAddress").click(onDeleteField);
     /* 匿名 */
     $("#anonymousLoginBtn").click(onAnonymousLoginBtn);
     /* 共通 */
@@ -226,12 +226,12 @@ function getUserData() {
     var mailAddress = currentLoginUser.get("mailAddress");
     var authData = JSON.stringify(currentLoginUser.get("authData"));
     var date = new Date(currentLoginUser.get("createDate"));
-    var createDate = date.getFullYear() + "-" 
+    var createDate = date.getFullYear() + "-"
                     + ((date.getMonth() < 10) ? "0" : "") + date.getMonth() + "-"
                     + ((date.getDate() < 10) ? "0" : "") + date.getDate() + "T"
                     + ((date.getHours() < 10) ? "0" : "") + date.getHours() + ":"
-                    + ((date.getMinutes() < 10) ? "0" : "") + date.getMinutes() + ":" 
-                    + ((date.getSeconds() < 10) ? "0" : "") + date.getSeconds() + "." 
+                    + ((date.getMinutes() < 10) ? "0" : "") + date.getMinutes() + ":"
+                    + ((date.getSeconds() < 10) ? "0" : "") + date.getSeconds() + "."
                     + ((date.getMilliseconds() < 10) ? "0" : "") + date.getMilliseconds() + "+09:00";
     // リストに追加
     $("#currentUserData").append("<tr style='border-right: 1px solid #ccc; border-left: 1px solid #ccc; color: #FFFFFF; background: #04162e;'><th scope='row' id='key'>key</th><td scope='row' id='value' style='width: 100%;'>value</td></tr>");
