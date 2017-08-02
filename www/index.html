@@ -28,7 +28,7 @@
                 <a href="#" id="IDLoginBtn" data-role="button" data-inline="false" data-theme="b">ログインする</a>
             </section>
             <div data-id="common_footer" data-role="footer" data-position="fixed" data-theme="c" class="ui-bar">
-                <a href="#" data-theme="d">ID / PW 認証</a>
+                <a data-theme="d">ID / PW 認証</a>
                 <a href="#emailLoginPage" data-theme="d">Email / PW 認証</a>
                 <a href="#AnonymousLoginPage" data-theme="d">匿名認証</a>
             </div>
@@ -72,7 +72,7 @@
             </section>
             <div data-id="common_footer" data-role="footer" data-position="fixed" data-theme="c" class="ui-bar">
                 <a href="#IDLoginPage" data-theme="d">ID / PW 認証</a>
-                <a href="#" data-theme="d">Email / PW 認証</a>
+                <a data-theme="d">Email / PW 認証</a>
                 <a href="#AnonymousLoginPage" data-theme="d">匿名認証</a>
             </div>
         </div>
@@ -99,7 +99,7 @@
                     <h3 class="ui-title"></h3>
                     <p>会員登録用のメールを送信します。<br>よろしいですか？</p>
                     <a href="#" id="YesBtn_mailAddress" data-role="button" data-inline="true" data-transition="flow" data-theme="b">はい</a>
-                    <a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">いいえ</a>
+                    <a href="#" id="NoBtn_mailAddress" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">いいえ</a>
                 </div>
             </div>
             <div data-id="common_footer" data-role="footer" data-position="fixed" data-theme="c" class="ui-bar">
@@ -121,7 +121,7 @@
             <div data-id="common_footer" data-role="footer" data-position="fixed" data-theme="c" class="ui-bar">
                 <a href="#IDLoginPage" data-theme="d">ID / PW 認証</a>
                 <a href="#emailLoginPage" data-theme="d">Email / PW 認証</a>
-                <a href="#" data-theme="d">匿名認証</a>
+                <a data-theme="d">匿名認証</a>
             </div>
         </div>
     
@@ -129,12 +129,12 @@
         <div data-role="page" id="DetailPage">
             <header data-role="header" data-position="fixed" data-theme="c">
                 <h1>会員デモ</h1>
-                <a href="#yesNoDialog_logout" class="ui-btn-left" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop" data-theme="d">ログアウト</a>
+                <a href="#yesNoDialog_logout" class="ui-btn-left" data-rel="popup" data-position-to="window" data-role="button" data-inline="false" data-theme="d">ログアウト</a>
             </header>
             <section data-role="content">
                 <!--Detail show-->
-                <div data-role="content" id="detailArea"><center>ようこそ！ログイン成功しました！</center></div>
-                <!--CurrentUser-->
+                <p><center>ようこそ！ログイン成功しました！</center></p>
+                <!--CurrentUserList-->
                 <center>
                     <table data-role="listview" class="currentUserData" id="currentUserData" data-theme="xyz" style="width: 100%;"></table>
                 </center>

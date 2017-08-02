@@ -1,19 +1,25 @@
 {
     "plugins": [
-        "mobi.monaca.plugins.Monaca",
-        "org.apache.cordova.splashscreen",
-        "mobi.monaca.plugins.MonacaBackend"
+        "mobi.monaca.plugins.Monaca@3.1.0",
+        "mobi.monaca.plugins.MonacaBackend@1.2.1"
     ],
     "framework_version": "3.5",
-    "xcode_version": "6",
-    "cordova_version": "4.1",
+    "xcode_version": "7",
+    "cordova_version": "6.2",
     "plugin_settings": [],
-    "external_plugins": [],
-    "title-ja": "[NCMB] 会員管理デモアプリ",
+    "external_plugins": [
+        "cordova-plugin-splashscreen@3.2.2",
+        "cordova-plugin-whitelist@1.2.2",
+        "cordova-custom-config@2.0.3"
+    ],
+    "title-ja": "MonacaUserDemoApp",
     "title-en": "",
     "description-ja": "",
     "description-en": "",
     "category": "User Template",
-    "platform": [],
-    "name": "generated-1501496342-5976e2b1ff2af26c49a6137a"
+    "platform": [
+        "android",
+        "ios"
+    ],
+    "name": "generated-1501654151-5981395c803451a725f54fae"
 }

@@ -1,8 +1,6 @@
 // [NCMB] APIキー設定
-// var appKey    = "YOUR_NCMB_APPKEY";
-// var clientKey = "YOUR_NCMB_CLIENTKEY";
-var appKey    = "a90925ffac8d9ce7c46e0c17b65857ec5d979f8a67da61237ce6636c064102d2";
-var clientKey = "4fce697bb07d506f0193ca53327d4c24122889e36cb9eff9841fd4b31b0fc4e1";
+var appKey    = "YOUR_NCMB_APPKEY";
+var clientKey = "YOUR_NCMB_CLIENTKEY";
 
 // [NCMB] SDKの初期化
 var ncmb = new NCMB(appKey, clientKey);
@@ -16,24 +14,50 @@ function onIDRegisterBtn() {
     // 入力フォームからID(username)とPW(password)を取得
     var username = $("#reg_username").val();
     var password = $("#IDReg_password").val();
+    // loading の表示
+    jQuery.mobile.loading('show');
     // [NCMB] user インスタンスの生成
     var user = new ncmb.User();
-    // [NCMB] ID / PW で新規登録とログイン
+    // [NCMB] ID / PW で新規登録
     user.set("userName", username)
         .set("password", password)
         .signUpByAccount()
         .then(function(user) {
             /* 処理成功 */
             console.log("【ID / PW 認証】新規登録に成功しました");
-            // [NCMB] ログイン中のユーザー情報の取得
-            currentLoginUser = ncmb.User.getCurrentUser();
-            // 詳細ページへ移動
-            $.mobile.changePage('#DetailPage');
+            // [NCMB] ID / PW でログイン
+            ncmb.User.login(user)
+                     .then(function(user) {
+                         /* 処理成功 */
+                         console.log("【ID / PW 認証】ログインに成功しました");
+                         // [NCMB] ログイン中のユーザー情報の取得
+                         currentLoginUser = ncmb.User.getCurrentUser();
+                         // フィールドを空に
+                         $("#reg_username").val("");
+                         $("#IDReg_password").val("");
+                         // 詳細ページへ移動
+                         $.mobile.changePage('#DetailPage');
+                     })
+                     .catch(function(error) {
+                         /* 処理失敗 */
+                         console.log("【ID / PW 認証】ログインに失敗しました: " + error);
+                         alert("【ID / PW 認証】ログインに失敗しました: " + error);
+                         // フィールドを空に
+                         $("#reg_username").val("");
+                         $("#IDReg_password").val("");
+                         // loading の表示
+                         jQuery.mobile.loading('hide');
+                     });
         })
         .catch(function(error) {
             /* 処理失敗 */
             console.log("【ID / PW 認証】新規登録に失敗しました：" + error);
             alert("【ID / PW 認証】新規登録に失敗しました：" + error);
+            // フィールドを空に
+            $("#reg_username").val("");
+            $("#IDReg_password").val("");
+            // loading の表示
+            jQuery.mobile.loading('hide');
         });
 }
 
@@ -42,6 +66,9 @@ function onIDLoginBtn() {
     // 入力フォームからID(username)とPW(password)を取得
     var username = $("#login_username").val();
     var password = $("#IDLogin_password").val();
+    // loading の表示
+    jQuery.mobile.loading('show');
+    
     // [NCMB] ID / PW でログイン
     ncmb.User.login(username, password)
              .then(function(user) {
@@ -49,6 +76,9 @@ function onIDLoginBtn() {
                  console.log("【ID / PW 認証】ログインに成功しました");
                  // [NCMB] ログイン中のユーザー情報の取得
                  currentLoginUser = ncmb.User.getCurrentUser();
+                 // フィールドを空に
+                 $("#login_username").val("");
+                 $("#IDLogin_password").val("");
                  // 詳細ページへ移動
                  $.mobile.changePage('#DetailPage');
              })
@@ -56,6 +86,11 @@ function onIDLoginBtn() {
                  /* 処理失敗 */
                  console.log("【ID / PW 認証】ログインに失敗しました: " + error);
                  alert("【ID / PW 認証】ログインに失敗しました: " + error);
+                 // フィールドを空に
+                 $("#login_username").val("");
+                 $("#IDLogin_password").val("");
+                 // loading の表示終了
+                 jQuery.mobile.loading('hide');
              });
 }
 
@@ -71,6 +106,8 @@ function onEmailRegisterBtn() {
                  alert("【Email / PW 認証】新規登録メールを配信しました。");
                  console.log("【Email / PW 認証】新規登録メールを配信しました。");
                  alert("届いたメールに記載されているURLにアクセスし、パスワードを登録してください。");
+                 // フィールドを空に
+                 $("#reg_mailAddress").val("");
                  // 【Email / PW 認証】ログインページへ移動
                  $.mobile.changePage('#emailLoginPage');
              })
@@ -86,6 +123,8 @@ function onEmailLoginBtn() {
     // 入力フォームからEmail(mailAddress)とPW(password)を取得
     var mailAddress = $("#login_mailAddress").val();
     var password = $("#emailLogin_password").val();
+    // loading の表示
+    jQuery.mobile.loading('show');
     // [NCMB] Email / PW でログイン
     ncmb.User.loginWithMailAddress(mailAddress, password)
              .then(function(user) {
@@ -93,6 +132,9 @@ function onEmailLoginBtn() {
                  console.log("【Email / PW 認証】ログインに成功しました");
                  // [NCMB] ログイン中のユーザー情報の取得
                  currentLoginUser = ncmb.User.getCurrentUser();
+                 // フィールドを空に
+                 $("#login_mailAddress").val("");
+                 $("#emailLogin_password").val("");
                  // 詳細ページへ移動
                  $.mobile.changePage('#DetailPage');
              })
@@ -100,11 +142,19 @@ function onEmailLoginBtn() {
                  /* 処理失敗 */
                  console.log("【Email / PW 認証】ログインに失敗しました: " + error);
                  alert("【Email / PW 認証】ログインに失敗しました: " + error);
+                 // フィールドを空に
+                 $("#login_mailAddress").val("");
+                 $("#emailLogin_password").val("");
+                 // loading の表示
+                 jQuery.mobile.loading('hide');
              });
 }
 
-/********** 【匿名認証】「ログインする」ボタン押下時の処理 **********/
+/********** 匿名認証**********/
+// 【匿名認証】「ログインする」ボタン押下時の処理 
 function onAnonymousLoginBtn() {
+    // loading の表示
+    jQuery.mobile.loading('show');
     // [NCMB] 匿名 でログイン
     ncmb.User.loginAsAnonymous()
              .then(function(user){
@@ -119,25 +169,28 @@ function onAnonymousLoginBtn() {
                  /* 処理失敗 */
                  console.log("【匿名認証】ログインに失敗しました: " + error);
                  alert("【匿名認証】ログインに失敗しました: " + error);
+                 // loading の表示
+                 jQuery.mobile.loading('hide');
              });
 }
 
 /********** 共通 **********/
-
-// 【共通】「ログアウト」ボタン押下後確認アラートで「はい」押下時の処理
+// 「ログアウト」ボタン押下後確認アラートで「はい」押下時の処理
 function onLogoutBtn() {  
     // [NCMB] ログアウト
     ncmb.User.logout();
     console.log("ログアウトに成功しました");
     // ログイン中のユーザー情報を空に
     currentLoginUser = null;
+    // currentUserDataリストを空に
+    $("#currentUserData").empty();
     // 【ID / PW】ログインページへ移動
     $.mobile.changePage('#IDLoginPage');
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-// Called when app launch
+// アプリ起動時
 $(function() {
     /* ID / PW */
     $("#IDLoginBtn").click(onIDLoginBtn);
@@ -145,18 +198,24 @@ $(function() {
     /* Email / PW */
     $("#emailLoginBtn").click(onEmailLoginBtn);
     $("#YesBtn_mailAddress").click(onEmailRegisterBtn);
+    $("#NoBtn_mailAddress").click(onDeleteField);  
     /* 匿名 */
     $("#anonymousLoginBtn").click(onAnonymousLoginBtn);
     /* 共通 */
     $("#YesBtn_logout").click(onLogoutBtn);
 });
 
+// loading 表示生成
+jQuery(document).on('mobileinit',function(){
+    jQuery.extend( jQuery.mobile.loader.prototype.options,{theme: 'a' ,text: 'Loading', textVisible: true} );
+});
+
 // DetailPage ページが表示されるたびに実行される処理
 $(document).on('pageshow','#DetailPage', function(e, d) {
-    // currentUserDataリストを空に
-    $("#currentUserData").empty();
     // currentUserData を表示
     getUserData();
+    // loading の表示を終了
+    jQuery.mobile.loading('hide');
 });
 
 // currentUser のデータを表示する処理
@@ -174,7 +233,6 @@ function getUserData() {
                     + ((date.getMinutes() < 10) ? "0" : "") + date.getMinutes() + ":" 
                     + ((date.getSeconds() < 10) ? "0" : "") + date.getSeconds() + "." 
                     + ((date.getMilliseconds() < 10) ? "0" : "") + date.getMilliseconds() + "+09:00";
-    
     // リストに追加
     $("#currentUserData").append("<tr style='border-right: 1px solid #ccc; border-left: 1px solid #ccc; color: #FFFFFF; background: #04162e;'><th scope='row' id='key'>key</th><td scope='row' id='value' style='width: 100%;'>value</td></tr>");
     $("#currentUserData").append("<tr><th>objectId</th><td><input type='text' style='width: 95%; color: #959595;' readonly='readonly'; value='" + objectId + "'/></tr>");
@@ -183,7 +241,11 @@ function getUserData() {
     $("#currentUserData").append("<tr><th>mailAddress</th><td><input type='text' style='width: 95%; color: #959595;' readonly='readonly'; value='" + mailAddress + "'/></tr>");
     $("#currentUserData").append("<tr><th>authData</th><td><input type='text' style='width: 95%; color: #959595;' readonly='readonly'; value='" + authData + "'/></tr>");
     $("#currentUserData").append("<tr><th>createDate</th><td><input type='text' style='width: 95%; color: #959595;' readonly='readonly'; value='" + createDate + "'/></tr>");
-
     // リストを更新
     $("#currentUserData").listview('refresh');
+}
+
+function onDeleteField() {
+    // フィールドを空に
+    $("#reg_mailAddress").val("");
 }
