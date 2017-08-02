@@ -7,9 +7,9 @@
 1. mBaaS にアプリを新規作成し、APIキーを発行する
 1. Monaca の[会員登録](https://ja.monaca.io/)（無料）
 1. Monaca プロジェクトをインポート
-  * https://github.com/natsumo/MonacaUserDemoApp/archive/master.zip
+   * https://github.com/natsumo/MonacaUserDemoApp/archive/master.zip
 1. mBaaS SDK を Monaca に設定
-  * 設定 ＞ JS/CSSコンポーネントの追加と削除 ＞ 「ncmb」を追加
+   * 設定 ＞ JS/CSSコンポーネントの追加と削除 ＞ 「ncmb」を追加
 1. Monaca プロジェクト `www/app.js` にAPIキーの設定
 ```js
 // [NCMB] APIキー設定
@@ -55,24 +55,9 @@ user.set("userName", username)
 ncmb.User.login(username, password)
          .then(function(user) {
              /* 処理成功 */
-             console.log("【ID / PW 認証】ログインに成功しました");
-             // [NCMB] ログイン中のユーザー情報の取得
-             currentLoginUser = ncmb.User.getCurrentUser();
-             // フィールドを空に
-             $("#login_username").val("");
-             $("#IDLogin_password").val("");
-             // 詳細ページへ移動
-             $.mobile.changePage('#DetailPage');
          })
          .catch(function(error) {
              /* 処理失敗 */
-             console.log("【ID / PW 認証】ログインに失敗しました: " + error);
-             alert("【ID / PW 認証】ログインに失敗しました: " + error);
-             // フィールドを空に
-             $("#login_username").val("");
-             $("#IDLogin_password").val("");
-             // loading の表示終了
-             $.mobile.loading('hide');
          });
 ```
 
@@ -83,18 +68,9 @@ ncmb.User.login(username, password)
 ncmb.User.requestSignUpEmail(mailAddress)
          .then(function(user){
              /* 処理成功 */
-             alert("【Email / PW 認証】新規登録メールを配信しました。");
-             console.log("【Email / PW 認証】新規登録メールを配信しました。");
-             alert("届いたメールに記載されているURLにアクセスし、パスワードを登録してください。");
-             // フィールドを空に
-             $("#reg_mailAddress").val("");
-             // 【Email / PW 認証】ログインページへ移動
-             $.mobile.changePage('#emailLoginPage');
          })
          .catch(function(error){
              /* 処理失敗 */
-             alert("【Email / PW 認証】新規登録メールの配信に失敗しました：" + error);
-             console.log("【Email / PW 認証】新規登録メールの配信失敗しました：" + error);
          });
 ```
 
@@ -104,24 +80,9 @@ ncmb.User.requestSignUpEmail(mailAddress)
 ncmb.User.loginWithMailAddress(mailAddress, password)
          .then(function(user) {
              /* 処理成功 */
-             console.log("【Email / PW 認証】ログインに成功しました");
-             // [NCMB] ログイン中のユーザー情報の取得
-             currentLoginUser = ncmb.User.getCurrentUser();
-             // フィールドを空に
-             $("#login_mailAddress").val("");
-             $("#emailLogin_password").val("");
-             // 詳細ページへ移動
-             $.mobile.changePage('#DetailPage');
          })
          .catch(function(error) {
              /* 処理失敗 */
-             console.log("【Email / PW 認証】ログインに失敗しました: " + error);
-             alert("【Email / PW 認証】ログインに失敗しました: " + error);
-             // フィールドを空に
-             $("#login_mailAddress").val("");
-             $("#emailLogin_password").val("");
-             // loading の表示
-             $.mobile.loading('hide');
          });
 ```
 
@@ -132,18 +93,9 @@ ncmb.User.loginWithMailAddress(mailAddress, password)
 ncmb.User.loginAsAnonymous()
          .then(function(user){
              /* 処理成功 */
-             console.log("【匿名認証】ログインに成功しました");
-             // [NCMB] ログイン中のユーザー情報の取得
-             currentLoginUser = ncmb.User.getCurrentUser();
-             // 詳細ページへ移動
-             $.mobile.changePage('#DetailPage');
          })
          .catch(function(error){
              /* 処理失敗 */
-             console.log("【匿名認証】ログインに失敗しました: " + error);
-             alert("【匿名認証】ログインに失敗しました: " + error);
-             // loading の表示
-             $.mobile.loading('hide');
          });
 ```
 
@@ -151,4 +103,10 @@ ncmb.User.loginAsAnonymous()
 ```js
 // [NCMB] ログアウト
 ncmb.User.logout();
+```
+
+### ログイン中のユーザー情報の取得
+```js
+// [NCMB] ログイン中のユーザー情報の取得
+currentLoginUser = ncmb.User.getCurrentUser();
 ```
