@@ -192,6 +192,7 @@ function onLogoutBtn() {
 
 // アプリ起動時
 $(function() {
+    $.mobile.defaultPageTransition = 'none';
     /* ID / PW */
     $("#IDLoginBtn").click(onIDLoginBtn);
     $("#IDRegisterBtn").click(onIDRegisterBtn);
