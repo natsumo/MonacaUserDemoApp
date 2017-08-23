@@ -17,15 +17,15 @@
 1. Monaca プロジェクト `www/app.js` にAPIキーの設定
 ```js
 // [NCMB] APIキー設定
-var appKey    = "YOUR_NCMB_APPKEY";
-var clientKey = "YOUR_NCMB_CLIENTKEY";
+var applicationKey = "YOUR_NCMB_APPLICATION_KEY";
+var clientKey = "YOUR_NCMB_CLIENT_KEY";
 ```
 
 ## コード
 ### SDK の初期化
 ```js
 // [NCMB] SDKの初期化
-var ncmb = new NCMB(appKey, clientKey);
+var ncmb = new NCMB(applicationKey, clientKey);
 ```
 
 ### ID/PW 認証
