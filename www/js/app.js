@@ -1,9 +1,9 @@
 // [NCMB] APIキー設定
-var appKey    = "YOUR_NCMB_APPKEY";
-var clientKey = "YOUR_NCMB_CLIENTKEY";
+var applicationKey = "YOUR_NCMB_APPLICATION_KEY";
+var clientKey = "YOUR_NCMB_CLIENT_KEY";
 
 // [NCMB] SDKの初期化
-var ncmb = new NCMB(appKey, clientKey);
+var ncmb = new NCMB(applicationKey, clientKey);
 
 // ログイン中ユーザー
 var currentLoginUser;
