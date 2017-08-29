@@ -1,6 +1,6 @@
 # MonacaUserDemoApp
 
-* ID/PW 認証、Email/PW 認証、匿名認証の３種類を試すことができる、ニフティクラウド mobile backend のサンプルアプリです。
+* ID/PW 認証、メールアドレス/PW 認証、匿名認証の３種類を試すことができる、ニフティクラウド mobile backend のサンプルアプリです。
 
 ## 動作確認までの手順
 1. ニフティクラウド mobile backend（以下 mBaaS）の[会員登録](http://mb.cloud.nifty.com/signup.htm)（無料）
@@ -14,7 +14,7 @@
    * https://github.com/natsumo/MonacaUserDemoApp/archive/master.zip
 1. mBaaS SDK を Monaca に設定
    * 設定 ＞ JS/CSSコンポーネントの追加と削除 ＞ 「ncmb」を追加
-1. Monaca プロジェクト `www/app.js` にAPIキーの設定
+1. Monaca プロジェクト `www/js/app.js` にAPIキーの設定
 
 ```js
 // [NCMB] APIキー設定
