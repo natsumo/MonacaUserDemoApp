@@ -15,6 +15,7 @@
 1. mBaaS SDK を Monaca に設定
    * 設定 ＞ JS/CSSコンポーネントの追加と削除 ＞ 「ncmb」を追加
 1. Monaca プロジェクト `www/app.js` にAPIキーの設定
+
 ```js
 // [NCMB] APIキー設定
 var applicationKey = "YOUR_NCMB_APPLICATION_KEY";
@@ -23,6 +24,7 @@ var clientKey = "YOUR_NCMB_CLIENT_KEY";
 
 ## コード
 ### SDK の初期化
+
 ```js
 // [NCMB] SDKの初期化
 var ncmb = new NCMB(applicationKey, clientKey);
@@ -30,6 +32,7 @@ var ncmb = new NCMB(applicationKey, clientKey);
 
 ### ID/PW 認証
 #### 新規登録 + ログイン
+
 ```js
 // [NCMB] user インスタンスの生成
 var user = new ncmb.User();
@@ -54,6 +57,7 @@ user.set("userName", username)
 ```
 
 #### ログイン
+
 ```js
 // [NCMB] ID / PW でログイン
 ncmb.User.login(username, password)
@@ -65,10 +69,11 @@ ncmb.User.login(username, password)
          });
 ```
 
-### Email/PW 認証
+### メールアドレス/PW 認証
 #### 新規登録
+
 ```js
-// [NCMB] Email に会員登録を行うためのメールを送信
+// [NCMB] メールアドレスに会員登録を行うためのメールを送信
 ncmb.User.requestSignUpEmail(mailAddress)
          .then(function(user){
              /* 処理成功 */
@@ -79,8 +84,9 @@ ncmb.User.requestSignUpEmail(mailAddress)
 ```
 
 #### ログイン
+
 ```js
-// [NCMB] Email / PW でログイン
+// [NCMB] メールアドレス / PW でログイン
 ncmb.User.loginWithMailAddress(mailAddress, password)
          .then(function(user) {
              /* 処理成功 */
@@ -92,6 +98,7 @@ ncmb.User.loginWithMailAddress(mailAddress, password)
 
 ### 匿名認証
 #### ログイン
+
 ```js
 // [NCMB] 匿名 でログイン
 ncmb.User.loginAsAnonymous()
@@ -104,13 +111,15 @@ ncmb.User.loginAsAnonymous()
 ```
 
 ### ログアウト（共通）
+
 ```js
 // [NCMB] ログアウト
 ncmb.User.logout();
 ```
 
-### ログイン中のユーザー情報の取得
+### ログイン中の会員情報の取得
+
 ```js
-// [NCMB] ログイン中のユーザー情報の取得
+// [NCMB] ログイン中の会員情報の取得
 currentLoginUser = ncmb.User.getCurrentUser();
 ```

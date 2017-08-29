@@ -22179,3 +22179,4 @@ $.mobile.document.delegate( ":jqmData(role='table')", "tablecreate refresh", fun
 
 /*** <End:monaca-jquery-mobile LoadJs:"components/monaca-jquery-mobile/jquery.mobile.js"> ***/
 /*** <End:monaca-jquery-mobile> ***/
+

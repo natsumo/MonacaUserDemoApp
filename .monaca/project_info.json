@@ -12,14 +12,11 @@
         "cordova-plugin-whitelist@1.2.2",
         "cordova-custom-config@2.0.3"
     ],
-    "title-ja": "MonacaUserDemoApp",
+    "title-ja": "",
     "title-en": "",
     "description-ja": "",
     "description-en": "",
     "category": "User Template",
-    "platform": [
-        "android",
-        "ios"
-    ],
-    "name": "generated-1501658810-5981395c803451a725f54fae"
+    "platform": [],
+    "name": "generated-1503996200-5981395c803451a725f54fae"
 }
