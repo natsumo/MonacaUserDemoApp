@@ -23,9 +23,32 @@ layout: false
 ]
 
 ## 概要
-Monacaで作成したアプリに会員認証機能の導入をしてみませんか？<br>ニフティクラウド mobile backendを使うことで、**既存アプリにも簡単に会員認証機能を導入可能** です。本セミナーではその導入手順と実装コードの解説を行います。
+* アプリに会員管理機能を導入したい！
+* 既存サービスに会員管理機能を導入したい！
+* ログインしないと見られなコンテンツを作りたい！
+
+.size_small_7[
+プレミアム会員機能イメージ
+]
+
+.center[<img src="document-img/premiumImage.png" alt="PREMIUM会員イメージ" width="500px">]
+
+
+気軽に導入できる「会員認証機能」があったらいいと思いませんか？
+
+---
+layout: false
+
+.footnote_right[
+概要
+]
+
+## 概要
+ニフティクラウド mobile backendを使うことで、Monacaで作成した既存アプリにも **簡単に会員認証機能を導入することができます**！
 
 .center[<img src="document-img/Appimage.png" alt="会員認証機能イメージ" width="500px">]
+
+本セミナーではその導入手順と実装コードの解説を行います。
 
 ---
 .footnote_right[
@@ -41,7 +64,7 @@ Monacaで作成したアプリに会員認証機能の導入をしてみませ�
 概要
 ]
 ### ニフティクラウド mobile backend って何？
-* __にふてぃくらうど-もばいる-ばっくえんど 【[ニフティクラウド mobile backend](http://mb.cloud.nifty.com/about.htm)】__ スマートフォンアプリに必要なバックエンド機能が開発不要で利用できるクラウドサービス。 クラウド上に用意された機能をAPIで呼び出すだけで利用できます。また、APIを簡単に使うためのSDKを用意しています（ iOS / Android / Monaca / Unity ）。mobile Backend as a Service の頭文字を取って、通称 **mBaaS** 呼ばれます。
+* __にふてぃくらうど-もばいる-ばっくえんど 【[ニフティクラウド mobile backend](http://mb.cloud.nifty.com/about.htm)】__ スマートフォンアプリに必要なバックエンド機能が開発不要で利用できるクラウドサービス。 クラウド上に用意された機能をAPIで呼び出すだけで利用できます。また、APIを簡単に使うためのSDKを用意しています（ iOS / Android / Monaca / Unity ）。mobile Backend as a Service の頭文字を取って、通称 **mBaaS** と呼ばれています。
 
 .center[![mBaaSとは？](document-img/About_mBaaS.png)]
 
@@ -69,7 +92,7 @@ __《サーバー側》mBaaS のすごいところ__
 .size_small_7[
 * 無料で使える！
 * **バックエンドの開発・運用は一切不要**！
-* データの保存はたった **３行** で実装可能！
+* ログイン処理はたった **１行** で実装可能！
 * **ダッシュボード** からクラウドの状況をパッと確認できる！
 ]
 ]
@@ -201,7 +224,7 @@ https://ja.monaca.io/
 ]
 ]
 
-* プロジェクトが作成さてたら、「開く」をクリックします
+* プロジェクトが作成されたら、「開く」をクリックします
 * プロジェクトが開かれます
 
 .center[<img src="document-img/Monaca_3.png" alt="Monacaの準備3" width="750px">]
@@ -258,7 +281,7 @@ http://mb.cloud.nifty.com/
 <br>
 * ダッシュボードが表示されます
 
-.center[![mBaaSの準備4](document-img/mBaaS_4.png)]
+.center[<img src="document-img/mBaaS_4.png" alt="mBaaSの準備4" width="600px">]
 
 * 次に、会員管理機能を利用するための設定を行います
 
@@ -297,9 +320,9 @@ http://mb.cloud.nifty.com/
 ]
 ]
 <br><br>
-* 「インストールしたコンポーネント」の右のテキストフィールドに「`ncmb`」と入力し、「検索」をクリックします
+* 「コンポーネント」の右のテキストフィールドに「`ncmb`」と入力し、「検索」をクリックします
 
-.center[![SDK導入2](document-img/SDK_introduction_2.png)]
+.center[<img src="document-img/SDK_introduction_2.png" alt="SDK導入2" width="780px">]
 
 ---
 .footnote_right[
@@ -307,11 +330,11 @@ http://mb.cloud.nifty.com/
 ハンズオン<br>3. mBaaS Javascript SDK の導入と初期化
 ]
 ]
-* 「ncmbインストールされていません。」と表示されるので、「追加」をクリックします
-* SDKのバージョンはそのまま（最新版を指定）で、「インストールの開始」をクリックします
-* 「ローダーの設定」で「`components/ncmb/ncmb.min.js`」のチェックボックスにチェックを入れて「OK」をクリックします
+* 「ncmb」と表示されるので、「追加」をクリックします
+* SDKのバージョンはそのまま（最新版を指定）で、「インストール」をクリックします
+* 「`components/ncmb/ncmb.min.js`」のチェックボックスにチェックを入れて「保存する」をクリックします
 
-.center[![SDK導入3](document-img/SDK_introduction_3.png)]
+.center[<img src="document-img/SDK_introduction_3.png" alt="SDK導入3" width="700px">]
 
 ---
 .footnote_right[
@@ -322,7 +345,7 @@ http://mb.cloud.nifty.com/
 <br><br>
 * 下記のように表示されれば導入完了です！
 
-.center[<img src="document-img/SDK_introduction_4.png" alt="SDK導入4" width="750px">]
+.center[<img src="document-img/SDK_introduction_4.png" alt="SDK導入4" width="780px">]
 
 ---
 .footnote_right[
@@ -346,7 +369,7 @@ http://mb.cloud.nifty.com/
 
 .center[<img src="document-img/code_api.png" alt="SDK初期化1" width="750px">]
 
-* mBaaS のダッシュボードから、APIキー（アプリケーションキーとクライアントキー）をコピーして、それぞれ`YOUR_NCMB_APPLICATION_KEY`と`YOUR_NCMB_CLIENT_KEY`に貼り付けます
+* mBaaS のダッシュボードから、<br>APIキー（アプリケーションキーとクライアントキー）をコピーして、<br>それぞれ`YOUR_NCMB_APPLICATION_KEY`と`YOUR_NCMB_CLIENT_KEY`に貼り付けます
 * このとき、ダブルクォーテーション「`"`」は消さないように注意しましょう
 
 ---
@@ -456,7 +479,7 @@ http://mb.cloud.nifty.com/
 * その他に、mBaaS保有データに自動で割り振られるUUIDとして「objectId」や、会員情報が登録された日時として「createDate」などの値が一緒に保存されます
 
 .size_small_7[
-* 注：パスワードは暗号化され管理者からも確認することはできません（仕様）
+* 注：パスワードは暗号化されるため、<br>　　ダッシュボードからも確認することはできません（仕様）
 ]
 
 ---
@@ -471,7 +494,7 @@ http://mb.cloud.nifty.com/
 ]
 
 * 実装コードは以下のように記述しています
- * `app.js`の 13行目以降参照
+ * `wwww/js/app.js` の 13行目以降 `onIDRegisterBtn()` 内参照
 
 ```js
 // [NCMB] user インスタンスの生成
@@ -482,7 +505,7 @@ user.set("userName", username)
     .signUpByAccount()
     .then(function(user) {
         /* 処理成功 */
-        // [NCMB] ID / PW でログイン
+        // [NCMB] userインスタンスでログイン
         ncmb.User.login(user)
                  .then(function(user) {
                      /* 処理成功 */
@@ -525,7 +548,7 @@ user.set("userName", username)
 ]
 
 * 実装コードは以下のように記述しています
- * `app.js`の 185行目以降参照
+ * `wwww/js/app.js` の 185行目以降 `onLogoutBtn()` 内参照
 
 ```js
 // [NCMB] ログアウト
@@ -563,7 +586,7 @@ ncmb.User.logout();
 
 * 既存会員データと照合してログインを行います
 * 実装コードは以下のように記述しています
- * `app.js`の 65行目以降参照
+ * `wwww/js/app.js` の 65行目以降 `onIDLoginBtn()` 内参照
 
 ```js
 // [NCMB] ID / PW でログイン
@@ -684,7 +707,7 @@ ncmb.User.login(username, password)
 ]
 
 * 実装コードは以下のように記述しています
- * `app.js`の 98行目以降参照
+ * `wwww/js/app.js` の 99行目以降 `onEmailRegisterBtn()` 内参照
 
 ```js
 // [NCMB] メールアドレス に会員登録を行うためのメールを送信
@@ -746,7 +769,7 @@ ncmb.User.requestSignUpEmail(mailAddress)
 ]
 
 * 実装コードは以下のように記述しています
- * `app.js`の 128行目以降参照
+ * `wwww/js/app.js` の 128行目以降 `onEmailLoginBtn()` 内参照
 
 ```js
 // [NCMB] メール / PW でログイン
@@ -827,7 +850,7 @@ ncmb.User.loginWithMailAddress(mailAddress, password)
 ]
 
 * 実装コードは以下のように記述しています
- * `app.js`の 161行目以降参照
+ * `wwww/js/app.js` の 161行目以降 `onAnonymousLoginBtn()` 内参照
 
 ```js
 // [NCMB] 匿名 でログイン
@@ -867,15 +890,19 @@ currentLoginUser = ncmb.User.getCurrentUser();
 ---
 ## まとめ
 
+.size_large_13[
 __３つの会員認証機能を体験しました！__
+
 1. ID / PW 認証
 2. メールアドレス / PW 認証
 3. 匿名認証
+]
 
 * 会員管理機能の導入は mBaaS で簡単に実現可能！
-* Monaca なら JavaScript SDK が利用できるから実装も簡単！
-* 既存アプリにもすぐに導入可能！
-
+ * Monaca なら JavaScript SDK が利用できるから実装も簡単！既存アプリにもすぐに導入可能！
+* ID / PW で気軽な会員管理を実現！
+* メールアドレス / PW で不正な会員登録を防ぎ、確実な会員管理を！
+* 仮会員として匿名認証を上図に利用することで、通常会員化の導線が作れる！
 
 ---
 layout: true
