@@ -25,7 +25,7 @@ function onIDRegisterBtn() {
         .then(function(user) {
             /* 処理成功 */
             console.log("【ID / PW 認証】新規登録に成功しました");
-            // [NCMB] ID / PW でログイン
+            // [NCMB] userインスタンスでログイン
             ncmb.User.login(user)
                      .then(function(user) {
                          /* 処理成功 */
