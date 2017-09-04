@@ -25,7 +25,7 @@ layout: false
 ## 概要
 * アプリに会員管理機能を導入したい！
 * 既存サービスに会員管理機能を導入したい！
-* ログインしないと見られなコンテンツを作りたい！
+* ログインしないと見られないコンテンツを作りたい！
 
 .size_small_7[
 プレミアム会員機能イメージ
@@ -34,7 +34,7 @@ layout: false
 .center[<img src="document-img/premiumImage.png" alt="PREMIUM会員イメージ" width="500px">]
 
 
-気軽に導入できる「会員認証機能」があったらいいと思いませんか？
+気軽に導入できる「会員認証機能」サービスがあったらいいと思いませんか？
 
 ---
 layout: false
@@ -44,12 +44,11 @@ layout: false
 ]
 
 ## 概要
-ニフティクラウド mobile backendを使うことで、Monacaで作成した既存アプリにも **簡単に会員認証機能を導入することができます**！
+ニフティクラウド mobile backendを使うことで、既存アプリにも、新規アプリにも **簡単に会員認証機能を導入することができます**！
 
-.center[<img src="document-img/Appimage.png" alt="会員認証機能イメージ" width="500px">]
+.center[<img src="document-img/Appimage.png" alt="会員認証機能イメージ" width="450px">]
 
-本セミナーではその導入手順と実装コードの解説を行います。
-
+本セミナーでは、サンプルアプリを使ってMonacaアプリに会員管理機能を導入する手順について学んでいきます。
 ---
 .footnote_right[
 概要
@@ -308,7 +307,7 @@ http://mb.cloud.nifty.com/
 ]
 ]
 ### 3. mBaaS Javascript SDK の導入と初期化
-* アプリのmBaaSを利用するためのSDKを導入します
+* mBaaSを利用するためのSDKを導入します
 * Monacaを開きます
 * 上部メニューバーから「設定」＞「JS/CSSコンポーネントの追加と削除...」をクリックします
 .center[![SDK導入1](document-img/SDK_introduction_1.png)]
@@ -390,7 +389,7 @@ http://mb.cloud.nifty.com/
 ]
 ]
 
-* １行目で設定したAPIキーは、５行目「SDKの初期化」で初期化をしています
+* １行目で設定したAPIキーを使用して、５行目「SDKの初期化」でSDKを初期化をしています
 
 .center[<img src="document-img/code_api2.png" alt="SDK初期化3" width="700px">]
 
@@ -517,7 +516,6 @@ user.set("userName", username)
     .catch(function(error) {
         /* 処理失敗 */
     });
-}
 ```
 
 ---
@@ -584,7 +582,7 @@ ncmb.User.logout();
 #### 3. ID / パスワード 認証 ログイン
 ]
 
-* 既存会員データと照合してログインを行います
+* 既存会員情報と照合してログインを行います
 * 実装コードは以下のように記述しています
  * `wwww/js/app.js` の 65行目以降 `onIDLoginBtn()` 内参照
 
@@ -690,10 +688,10 @@ ncmb.User.login(username, password)
 
 .center[<img src="document-img/Email&PW_5.png" alt="メールアドレス&パスワード新規登録4" width="750px">]
 
-* メールアドレス認証の場合は`userName`と`password`が自動的に設定されます
-  * この`userName`を利用して ID / パスワード 認証 でのログインが可能です
+* メールアドレス認証の場合は`userName`が自動的に設定されます
+  * この`userName`を利用して ID / パスワード 認証 でのログインも可能です
 * `mailAddressConfirm`の値（`true`/`false`）はメールにてPW設定を行った場合に`true`が設定されます
-  * ID / PW 認証の会員にも追加でメールアドレスの設定が可能です。<br>この場合は`false`が設定されます。
+  * ID / パスワード 認証の会員にも追加でメールアドレスの設定が可能です。<br>この場合は`false`が設定されます。
 
 ---
 .footnote_right[
@@ -735,7 +733,7 @@ ncmb.User.requestSignUpEmail(mailAddress)
   * 会員登録時に配信されるメールの文章や、パスワード登録画面デザインや自由にカスタマイズ可能です
 
 .size_small_7[
-* 「アプリ設定」＞「会員設定」の「メールの文面」、「カスタムページ」参照
+* 「アプリ設定」＞「会員認証設定」の「メールの文面」、「カスタムページ」参照
 ]
 
 .center[<img src="document-img/Email&PW_6.png" alt="メールアドレス&パスワード新規登録5" width="600px">]
@@ -813,7 +811,7 @@ ncmb.User.loginWithMailAddress(mailAddress, password)
 
 .center[<img src="document-img/anonymous_2.png" alt="匿名ログイン2" width="500px">]
 
-* メールアドレス認証と同様、自動で`userName`と`password`が割り振られます
+* 自動で`userName`と`password`が割り振られます
 * 匿名会員では`authData`が設定されていることが確認できます
 * 会員情報が登録されたことを、mBaaSのダッシュボードを確認しましょう
 
@@ -828,9 +826,9 @@ ncmb.User.loginWithMailAddress(mailAddress, password)
 #### 6. 匿名認証
 ]
 
-* `authData`にSDKの内部で発行したIDを設定して会員データを作成しています
+* `authData`にSDKの内部で発行したIDを設定して会員情報を作成しています
   * 例：`{"anonymous":{"id":"6f9cb6aa-be0f-6756-6fd9-c58a5ae737ad"}}`
-* 匿名会員情報はログアウト（またはセッション切れ）で破棄され、無効な会員データとなります
+* 匿名会員情報はログアウト（またはセッション切れ）で破棄され、無効な会員情報となります
   * 再び匿名会員としてログインを行うと別の会員として登録されます
 
 .center[<img src="document-img/anonymous_3.png" alt="匿名ログイン3" width="750px">]
@@ -893,15 +891,15 @@ currentLoginUser = ncmb.User.getCurrentUser();
 .size_large_13[
 __３つの会員認証機能を体験しました！__
 
-1. ID / PW 認証
-2. メールアドレス / PW 認証
+1. ID / パスワード 認証
+2. メールアドレス / パスワード 認証
 3. 匿名認証
 ]
 
 * 会員管理機能の導入は mBaaS で簡単に実現可能！
  * Monaca なら JavaScript SDK が利用できるから実装も簡単！既存アプリにもすぐに導入可能！
-* ID / PW で気軽な会員管理を実現！
-* メールアドレス / PW で不正な会員登録を防ぎ、確実な会員管理を！
+* ID / パスワード で気軽な会員管理を実現！
+* メールアドレス / パスワード で不正な会員登録を防ぎ、確実な会員管理を！
 * 仮会員として匿名認証を上図に利用することで、通常会員化の導線が作れる！
 
 ---
