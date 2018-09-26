@@ -3,7 +3,7 @@
 * ID/PW 認証、メールアドレス/PW 認証、匿名認証の３種類を試すことができる、ニフティクラウド mobile backend のサンプルアプリです。
 
 ## 動作確認までの手順
-1. ニフティクラウド mobile backend（以下 mBaaS）の[会員登録](http://mb.cloud.nifty.com/signup.htm)（無料）
+1. ニフティクラウド mobile backend（以下 mBaaS）の[会員登録](https://mbaas.nifcloud.com/signup.htm)（無料）
 1. mBaaS にアプリを新規作成し、APIキーを発行する
 1. mBaaS に作成したアプリで会員管理を利用するための設定をする
    1. アプリ設定 ＞ 会員認証設定 ＞ 会員認証設定 内 ID/パスワード認証 ＞ 「許可する」を選択 ＞ 「保存する」をクリック
